@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img">
-  <metadata>BPaaS site identity cba2892718eb21bf</metadata>
-  <rect width="64" height="64" rx="10" fill="hsl(290 52% 24%)"/>
-  <path d="M31 0h33v64H17Z" fill="hsl(115 73% 63%)" opacity="0.82"/>
-  <g transform="rotate(116 32 32)" opacity="0.42"><circle cx="32" cy="32" r="17" fill="none" stroke="#ffffff" stroke-width="7"/></g>
-  <text x="32" y="39" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="0">SS</text>
+  <title>상암 코인노래방 할인</title>
+  <rect width="64" height="64" rx="17" fill="hsl(290 47% 24%)"/>
+  <g transform="rotate(0 32 32)"><circle cx="32" cy="32" r="17" fill="none" stroke="hsl(290 24% 96%)" stroke-width="8"/><circle cx="32" cy="32" r="7" fill="hsl(352 68% 67%)"/></g>
 </svg>
