@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/2) · t3b07-sa-coin-sale</title>
+  <meta name="description" content="t3b07-sa-coin-sale에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://sangam-song-note.node-link.shop/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ *, *::before, *::after {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ html {
+ font-size: 16px;
+ scroll-behavior: smooth;
+ }
+ body {
+ font-family: 'Georgia', 'Times New Roman', 'Noto Serif KR', serif;
+ background-color: #fdfaf3;
+ color: #2c2416;
+ line-height: 1.8;
+ letter-spacing: 0.02em;
+ }
+ .container {
+ max-width: 720px;
+ margin: 0 auto;
+ padding: 0 72px;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 0 24px;
+ }
+ }
+ header {
+ border-bottom: 1px solid #8a7355;
+ padding: 24px 0;
+ margin-bottom: 48px;
+ }
+ .header-inner {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+ .logo {
+ font-size: 1.4rem;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ color: #2c2416;
+ text-decoration: none;
+ }
+ .logo span {
+ color: #8a7355;
+ }
+ nav.desktop-nav {
+ display: flex;
+ gap: 32px;
+ }
+ nav.desktop-nav a {
+ color: #2c2416;
+ text-decoration: none;
+ font-size: 0.9rem;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ transition: color 0.2s;
+ }
+ nav.desktop-nav a:hover {
+ color: #8a7355;
+ }
+ .hamburger {
+ display: none;
+ flex-direction: column;
+ gap: 5px;
+ cursor: pointer;
+ background: none;
+ border: none;
+ padding: 4px;
+ }
+ .hamburger span {
+ display: block;
+ width: 24px;
+ height: 1px;
+ background: #2c2416;
+ transition: all 0.3s;
+ }
+ .mobile-menu {
+ display: none;
+ flex-direction: column;
+ gap: 16px;
+ padding: 24px 0;
+ border-top: 1px solid #8a7355;
+ margin-top: 16px;
+ }
+ .mobile-menu a {
+ color: #2c2416;
+ text-decoration: none;
+ font-size: 1rem;
+ letter-spacing: 0.08em;
+ padding: 8px 0;
+ }
+ .mobile-menu.active {
+ display: flex;
+ }
+ @media (max-width: 768px) {
+ nav.desktop-nav {
+ display: none;
+ }
+ .hamburger {
+ display: flex;
+ }
+ }
+ .hero {
+ position: relative;
+ padding: 120px 0 80px;
+ margin-bottom: 120px;
+ background: linear-gradient(135deg, #2c2416 0%, #8a7355 40%, #fdfaf3 100%);
+ background-size: cover;
+ background-position: center;
+ text-align: center;
+ }
+ .hero::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(to bottom, rgba(44,36,22,0.6) 0%, rgba(138,115,85,0.3) 100%);
+ pointer-events: none;
+ }
+ .hero .container {
+ position: relative;
+ z-index: 1;
+ }
+ .hero h1 {
+ font-size: 3.2rem;
+ font-weight: 700;
+ letter-spacing: 0.15em;
+ color: #fdfaf3;
+ line-height: 1.2;
+ margin-bottom: 24px;
+ text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+ }
+ .hero p {
+ font-size: 1.1rem;
+ letter-spacing: 0.05em;
+ color: #fdfaf3;
+ max-width: 560px;
+ margin: 0 auto 32px;
+ opacity: 0.9;
+ }
+ .hero .cta {
+ display: inline-block;
+ padding: 12px 40px;
+ border: 1px solid #fdfaf3;
+ color: #fdfaf3;
+ text-decoration: none;
+ letter-spacing: 0.1em;
+ font-size: 0.95rem;
+ transition: all 0.3s;
+ }
+ .hero .cta:hover {
+ background: #fdfaf3;
+ color: #2c2416;
+ }
+ @media (max-width: 768px) {
+ .hero {
+ padding: 80px 0 60px;
+ margin-bottom: 80px;
+ }
+ .hero h1 {
+ font-size: 2rem;
+ }
+ }
+ section {
+ margin-bottom: 120px;
+ }
+ h2 {
+ font-size: 2rem;
+ letter-spacing: 0.12em;
+ color: #2c2416;
+ border-bottom: 1px solid #8a7355;
+ padding-bottom: 16px;
+ margin-bottom: 48px;
+ font-weight: 700;
+ }
+ h2::first-letter {
+ font-size: 2.8rem;
+ color: #8a7355;
+ margin-right: 4px;
+ }
+ h3 {
+ font-size: 1.3rem;
+ letter-spacing: 0.08em;
+ color: #2c2416;
+ margin-bottom: 16px;
+ font-weight: 600;
+ }
+ p {
+ font-size: 1rem;
+ margin-bottom: 24px;
+ color: #2c2416;
+ }
+ .drop-cap::first-letter {
+ font-size: 3.2rem;
+ float: left;
+ margin-right: 8px;
+ margin-top: 4px;
+ color: #8a7355;
+ font-weight: 700;
+ line-height: 0.8;
+ }
+ .features-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 48px;
+ }
+ @media (max-width: 768px) {
+ .features-grid {
+ grid-template-columns: 1fr;
+ gap: 32px;
+ }
+ }
+ .feature-item {
+ border-top: 1px solid #8a7355;
+ padding-top: 24px;
+ }
+ .feature-item h3 {
+ font-size: 1.1rem;
+ }
+ .feature-item p {
+ font-size: 0.95rem;
+ margin-bottom: 0;
+ }
+ .reviews {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 48px;
+ }
+ @media (max-width: 768px) {
+ .reviews {
+ grid-template-columns: 1fr;
+ gap: 32px;
+ }
+ }
+ .review-card {
+ border: 1px solid #8a7355;
+ padding: 32px;
+ background: #ffffff;
+ }
+ .review-card .meta {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 16px;
+ font-size: 0.85rem;
+ letter-spacing: 0.05em;
+ }
+ .review-card .name {
+ font-weight: 700;
+ color: #2c2416;
+ }
+ .review-card .date {
+ color: #8a7355;
+ }
+ .review-card .stars {
+ color: #8a7355;
+ letter-spacing: 0.1em;
+ margin-bottom: 12px;
+ font-size: 1.1rem;
+ }
+ .review-card p {
+ font-size: 0.95rem;
+ margin-bottom: 0;
+ line-height: 1.7;
+ }
+ .pricing {
+ border: 1px solid #8a7355;
+ padding: 48px;
+ background: #ffffff;
+ text-align: center;
+ }
+ .pricing h3 {
+ font-size: 1.6rem;
+ margin-bottom: 24px;
+ }
+ .pricing .price-list {
+ list-style: none;
+ padding: 0;
+ margin: 0 auto;
+ max-width: 400px;
+ }
+ .pricing .price-list li {
+ display: flex;
+ justify-content: space-between;
+ padding: 16px 0;
+ border-bottom: 1px solid #e0d8cc;
+ font-size: 1rem;
+ letter-spacing: 0.05em;
+ }
+ .pricing .price-list li:last-child {
+ border-bottom: none;
+ }
+ .pricing .price-list .item {
+ color: #2c2416;
+ }
+ .pricing .price-list .price {
+ font-weight: 700;
+ color: #8a7355;
+ }
+ .pricing .note {
+ margin-top: 24px;
+ font-size: 0.9rem;
+ color: #8a7355;
+ }
+ .contact-info {
+ text-align: center;
+ padding: 48px 0;
+ border-top: 1px solid #8a7355;
+ border-bottom: 1px solid #8a7355;
+ }
+ .contact-info a {
+ color: #8a7355;
+ text-decoration: none;
+ font-size: 1.4rem;
+ letter-spacing: 0.1em;
+ font-weight: 700;
+ }
+ .contact-info a:hover {
+ text-decoration: underline;
+ }
+ .contact-info p {
+ margin-bottom: 8px;
+ font-size: 0.9rem;
+ color: #8a7355;
+ }
+ footer {
+ padding: 48px 0;
+ text-align: center;
+ border-top: 1px solid #8a7355;
+ margin-top: 48px;
+ }
+ footer p {
+ font-size: 0.85rem;
+ color: #8a7355;
+ margin-bottom: 8px;
+ letter-spacing: 0.05em;
+ }
+ footer .copyright {
+ font-size: 0.8rem;
+ color: #8a7355;
+ opacity: 0.7;
+ }
+ .fine-border {
+ border: 1px solid #8a7355;
+ }
+ .gap-48 {
+ margin-bottom: 48px;
+ }
+ @media (max-width: 768px) {
+ section {
+ margin-bottom: 80px;
+ }
+ h2 {
+ font-size: 1.5rem;
+ margin-bottom: 32px;
+ }
+ .pricing {
+ padding: 32px 24px;
+ }
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/2) · t3b07-sa-coin-sale">
+  <meta property="og:description" content="t3b07-sa-coin-sale에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://sangam-song-note.node-link.shop/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <div class="container header-inner">
+ <a href="/" class="logo"><span>◆</span> 상암코인<span>.</span></a>
+ <nav class="desktop-nav">
+ <a href="#about">소개</a>
+ <a href="#features">특징</a>
+ <a href="#reviews">리뷰</a>
+ <a href="#pricing">가격</a>
+ <a href="#contact">문의</a>
+ </nav>
+ <button class="hamburger" aria-label="메뉴 열기" onclick="toggleMenu()">
+ 
+ 
+ 
+ </button>
+ </div>
+ <div class="container mobile-menu" id="mobileMenu">
+ <a href="#about" onclick="toggleMenu()">소개</a>
+ <a href="#features" onclick="toggleMenu()">특징</a>
+ <a href="#reviews" onclick="toggleMenu()">리뷰</a>
+ <a href="#pricing" onclick="toggleMenu()">가격</a>
+ <a href="#contact" onclick="toggleMenu()">문의</a>
+ </div>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 38개 · 1/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/checklist-001-2ca66h.html">상암 코인노래방 할인 선택 전에 확인할 체크리스트와 실패 사례</a>
+        <p class="post-item__summary">포스트 기획 테마: 상암 코인노래방 할인 선택 전에 확인할 체크리 리스트와 실패 사례</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/compare-002-lk5030.html">상암 코인노래방 할인</a>
+        <p class="post-item__summary">상암동은 업무 지구와 주거지가 어우러진 지역으로 많은 직장인과 지역 주민들이 여가 시간을 보내는 곳입니다. 일상 속 쌓인 스트레스를 해소하기 위해 노래방을 찾는 분들이 많아지고 있는데 그중에서도 코</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-391.html">상암 코인노래방 결제 수단 따라 할인율 갈리는 진짜 이유</a>
+        <p class="post-item__summary">상암 일대 코인노래방에서 반값 결제를 할 수 있다는 말이 떠돈다. 하지만 아무 매장이나 들어가서 아무 앱이나 켜면 할인이 적용되는 건 아니다. 각 매장이 가맹 계약을 맺은 특정 결제 수단만 할인이 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0301.html">상암 코인노래방 할인: 셔츠룸 예약 후기 신뢰도 판별법</a>
+        <p class="post-item__summary">상암 지역에서 코인노래방 할인을 찾으시는 분들이 많습니다. 하지만 때로는 이러한 할인 정보와 함께, 셔츠룸 예약과 같은 다양한 엔터테인먼트 경험에 대한 정보도 필요할 수 있습니다. 특히 셔츠룸을 이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0302.html">상암 코인노래방 할인 vs 마포 단체 회식 노래방 가격 비교</a>
+        <p class="post-item__summary">상암 지역에서 코인 노래방을 이용할 때 흔히 마주치는 '할인' 정보는 개인적인 즐거움을 위한 경우가 많습니다. 하지만 회사 규모의 단체 회식을 기획할 때는 단순히 할인율보다는 전체적인 비용 효율성과</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0303.html">상암 코인노래방 할인 대신 4</a>
+        <p class="post-item__summary">상암 코인노래방 할인 정보를 찾는 발걸음은 종종 예상치 못한 지점에서 멈추곤 합니다. 개인적인 즐거움의 영역을 넘어, 반복적인 업무를 자동화하고 싶다는 니즈가 더욱 중요해지고 있기 때문입니다. 특히</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0304.html">상암 코인노래방 할인보다 셔츠룸 사이트 위치 확인</a>
+        <p class="post-item__summary">상암 코인노래방 할인 정보를 검색하는 것은 분명 매력적인 선택지 중 하나입니다. 하지만 특정 서비스를 이용하고자 할 때, 가격 할인보다 더 우선적으로 고려해야 할 중요한 요소들이 존재합니다. 바로 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0305.html">상암 코인노래방 할인 꿀팁과 마포 셔츠룸 예약 시 눈탱이 피하는 법</a>
+        <p class="post-item__summary">새로운 지역에서 즐길 거리를 찾다 보면 예상치 못한 지출이나 불편함을 겪는 경우가 있습니다. 특히 처음 방문하는 곳이라면 더욱 신중해야 합니다. 상암 지역에서 코인 노래방 할인을 찾는 것도 좋지만,</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0306.html">상암 코인노래방 할인 정보와 구글 인덱싱 속도 초고속 광회선 대역폭 최적화</a>
+        <p class="post-item__summary">많은 분들이 상암 코인노래방 할인 정보를 찾으며 즐거운 시간을 계획합니다. 하지만 온라인 정보의 세계에서는 때로 잘못된 상식이 통용되곤 합니다. 예를 들어, '구글 인덱싱 속도는 시간이 지나면 자연</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0307.html">상암 코인노래방 할인과 원문 보기</a>
+        <p class="post-item__summary">요즘 상암 코인노래방 할인 정보를 공유하며 즐거운 시간을 보내는 것이 유행입니다. 하지만 디지털 세상에서는 또 다른 형태의 '재미'와 '효율'을 추구하는 사람들이 있습니다. 바로 웹사이트의 검색 엔</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0308.html">상암 코인노래방 할인 정보보다 유용한 마포 럭셔리 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">혹시 중요한 VIP 모임을 앞두고 어디서부터 준비해야 할지 막막한 경험이 있으신가요? 단순히 상암 코인노래방 할인 정보를 찾는 수준을 넘어 격식 있는 공간을 확보하는 일은 생각보다 복잡한 절차를 동</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0309.html">상암 코인노래방 할인 정보를 활용한 합정 셔츠룸 단골들이 뽑은 핫플 매거진 탐구</a>
+        <p class="post-item__summary">상암 코인노래방 할인 혜택을 꼼꼼히 챙기는 소비자는 효율적인 여가 생활을 즐기는 데 탁월한 능력을 보입니다. 이러한 경제적 감각은 지역 내 숨겨진 명소를 발굴하는 안목으로 이어지기도 합니다. 합정 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0310.html">상암 코인노래방 할인 비교와 지수 성장 클리닉 정보</a>
+        <p class="post-item__summary">상암 코인노래방 할인 프로모션을 활용하려는 사용자는 대개 합리적인 소비를 지향합니다. 이러한 성향은 디지털 정보를 다룰 때도 나타나며, 정보의 가치를 판단하는 기준을 정립하는 데 큰 영향을 미칩니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0311.html">상암 코인노래방 할인: 풋쌤 동대문점 예약 노하우</a>
+        <p class="post-item__summary">상암 코인노래방 할인 정보를 찾으시는 분들이 많지만, 때로는 예상치 못한 곳에서 만족스러운 경험을 얻기도 합니다. 즐거운 시간을 보내기 위해 코인노래방을 찾았다가 오히려 불편함을 겪는 경우도 종종 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0312.html">상암 코인노래방 할인 이용 시 체크리스트와 마포/합정 인디 소셜 라운지 가이드</a>
+        <p class="post-item__summary">상암 코인노래방 할인 이벤트를 계획 중이라면 이동 경로와 매장 접근성을 미리 파악하는 것이 좋습니다. 대중교통 이용 여부와 매장이 위치한 건물의 출입구 위치를 확인하는 체크리스트를 작성하면 훨씬 효</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0164.html">상암 코인노래방 할인 활용 및 구글 봇 정밀 검진 및 크롤 버짓 밀착 간호</a>
+        <p class="post-item__summary">당신은 왜 늘 같은 비용을 지불하고 좁은 시설에서 노래를 부르고 있습니까? 할인 혜택을 꼼꼼히 챙기지 않거나 업체별 시설 차이를 비교하지 않는 것은 경제적으로도 시간적으로도 손해입니다. 이는 마치 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0165.html">상암 코인노래방 할인 받듯 스마트한 구글 알고리즘 고신용 도메인 보증 카드 발급 절차</a>
+        <p class="post-item__summary">상암 코인노래방 할인 혜택을 챙기는 것처럼 온라인 비즈니스 운영자는 도메인 신뢰도를 전략적으로 관리해야 합니다. 디지털 공간에서의 신용은 검색 엔진의 평가 기준이 되며 이는 곧 검색 노출과 직결됩니</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0166.html">상암 코인노래방 할인 비교처럼 마포 홍대 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">상암 코인노래방 할인 정보를 찾는 것처럼 합리적인 유흥 공간을 찾는 과정에서도 철저한 비교가 필요합니다. 마포와 합정 일대에서 단체 모임을 계획할 때 가장 먼저 고려해야 할 요소는 공간의 가용성과 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0167.html">상암 코인노래방 할인 정보처럼 마포 홍대 로컬 럭셔리 밤문화 가이드 전략적 접근</a>
+        <p class="post-item__summary">상암 코인노래방 할인 혜택을 똑똑하게 이용하는 사람들이 있듯이 마포의 밤문화를 즐길 때도 전략적 준비가 필요합니다. 많은 방문객이 실패를 경험하는 지점은 바로 충분한 사전 조사 없이 방문하여 정보의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0168.html">상암 코인노래방 할인 팁으로 보는 구글 신뢰 지수 모발이식 솔루션과 도메인 파워</a>
+        <p class="post-item__summary">상암 코인노래방 할인 혜택을 챙기듯 온라인상의 정보 신뢰도 또한 정교한 확인 절차를 거쳐야 합니다. 검색 엔진이 특정 웹사이트의 신뢰 지수를 판단할 때 가장 먼저 보는 것은 콘텐츠의 전문성과 일관성</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
